@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firewall Creator", "Firewall Creator\Firewall Creator.csproj", "{C321EE90-7DA2-4FC7-A522-556B7F43241B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C321EE90-7DA2-4FC7-A522-556B7F43241B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C321EE90-7DA2-4FC7-A522-556B7F43241B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C321EE90-7DA2-4FC7-A522-556B7F43241B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C321EE90-7DA2-4FC7-A522-556B7F43241B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BE3F6C3-E029-498B-B63E-11410485FD71}
+	EndGlobalSection
+EndGlobal
