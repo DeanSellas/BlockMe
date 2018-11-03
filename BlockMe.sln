@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firewall Creator", "Firewall Creator\Firewall Creator.csproj", "{C321EE90-7DA2-4FC7-A522-556B7F43241B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockMe", "BlockMe\BlockMe.csproj", "{C321EE90-7DA2-4FC7-A522-556B7F43241B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5BE3F6C3-E029-498B-B63E-11410485FD71}
+		SolutionGuid = {6A340DE3-DC40-47E9-8742-C93D1822B054}
 	EndGlobalSection
 EndGlobal

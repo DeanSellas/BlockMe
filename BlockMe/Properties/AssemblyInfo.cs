@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Firewall Creator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Block Me!")]
+[assembly: AssemblyDescription("Simple Firewall Rule Creator")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Firewall Creator")]
+[assembly: AssemblyProduct("Block Me!")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
