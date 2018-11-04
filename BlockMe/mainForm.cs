@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -103,8 +104,9 @@ namespace BlockMe {
             if (!enableNow)
                 enable = "no";
 
+            var fileName = String.Format("BlockMe-{0}.bat", name.Replace(" ", ""));
 
-            var filePath = String.Format("{0}\\{1}.bat", desktop, name);
+            var filePath = String.Format("{0}\\{1}", desktop, fileName);
 
             if (File.Exists(filePath)) {
                 DialogResult result = MessageBox.Show("Do you want to overwrite the current file?", "File Exists!", MessageBoxButtons.YesNo,MessageBoxIcon.Asterisk);
@@ -122,11 +124,17 @@ namespace BlockMe {
                 Console.WriteLine(val);
             }
             File.AppendAllText(filePath, "pause");
+
+            MessageBox.Show(String.Format("{0} was created on the desktop. Please open it in Admin Mode", fileName), "File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
+
+
 
         private void pathTextbox_TextChanged(object sender, EventArgs e) { checkPath(); }
 
+        private void githubToolStripMenuItem_Click(object sender, EventArgs e) { Process.Start("https://github.com/DeanSellas/BlockMe"); }
 
-        
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) { Close(); }
     }
 }
