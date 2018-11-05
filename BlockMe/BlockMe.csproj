@@ -7,7 +7,7 @@
     <ProjectGuid>{C321EE90-7DA2-4FC7-A522-556B7F43241B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BlockMe</RootNamespace>
-    <AssemblyName>Block Me!</AssemblyName>
+    <AssemblyName>BlockMe</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
