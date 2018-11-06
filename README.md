@@ -1,8 +1,11 @@
-# BlockMe
+# BlockMe v0.75
 Basic app to mass create firewall rules via batch file.
 
-### Current Version 0.5
+- - -
+
+### Features
  + Creates a batch file to create a firewall rule
+ + Allows you to mass block exes
 
 ### Planned Features
 + Autoupdater

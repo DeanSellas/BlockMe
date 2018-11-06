@@ -33,9 +33,9 @@
             this.buildButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.githubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.githubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,9 +66,9 @@
             this.blockFilesInPath.AutoSize = true;
             this.blockFilesInPath.Location = new System.Drawing.Point(12, 76);
             this.blockFilesInPath.Name = "blockFilesInPath";
-            this.blockFilesInPath.Size = new System.Drawing.Size(128, 17);
+            this.blockFilesInPath.Size = new System.Drawing.Size(121, 17);
             this.blockFilesInPath.TabIndex = 2;
-            this.blockFilesInPath.Text = "Block All Files In Path";
+            this.blockFilesInPath.Text = "Block Files In Folder";
             this.blockFilesInPath.UseVisualStyleBackColor = true;
             this.blockFilesInPath.CheckedChanged += new System.EventHandler(this.checkBoxValChange);
             // 
@@ -78,9 +78,9 @@
             this.blockAllSubfolders.Enabled = false;
             this.blockAllSubfolders.Location = new System.Drawing.Point(12, 99);
             this.blockAllSubfolders.Name = "blockAllSubfolders";
-            this.blockAllSubfolders.Size = new System.Drawing.Size(156, 17);
+            this.blockAllSubfolders.Size = new System.Drawing.Size(142, 17);
             this.blockAllSubfolders.TabIndex = 3;
-            this.blockAllSubfolders.Text = "Block All Files In Subfolders";
+            this.blockAllSubfolders.Text = "Block Files In Subfolders";
             this.blockAllSubfolders.UseVisualStyleBackColor = true;
             this.blockAllSubfolders.CheckedChanged += new System.EventHandler(this.checkBoxValChange);
             // 
@@ -129,13 +129,6 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // githubToolStripMenuItem
-            // 
-            this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.githubToolStripMenuItem.Text = "Github";
-            this.githubToolStripMenuItem.Click += new System.EventHandler(this.githubToolStripMenuItem_Click);
-            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
@@ -145,6 +138,7 @@
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -152,6 +146,13 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // githubToolStripMenuItem
+            // 
+            this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.githubToolStripMenuItem.Text = "Github";
+            this.githubToolStripMenuItem.Click += new System.EventHandler(this.githubToolStripMenuItem_Click);
             // 
             // mainForm
             // 

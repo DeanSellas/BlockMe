@@ -22,5 +22,41 @@ namespace BlockMe.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool blockInFolderDefault {
+            get {
+                return ((bool)(this["blockInFolderDefault"]));
+            }
+            set {
+                this["blockInFolderDefault"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool blockInSubfolderDefault {
+            get {
+                return ((bool)(this["blockInSubfolderDefault"]));
+            }
+            set {
+                this["blockInSubfolderDefault"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool enableOnBuild {
+            get {
+                return ((bool)(this["enableOnBuild"]));
+            }
+            set {
+                this["enableOnBuild"] = value;
+            }
+        }
     }
 }

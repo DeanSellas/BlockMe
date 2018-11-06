@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlockMe.Properties;
 
 namespace BlockMe {
     public partial class nameForm : Form {
@@ -23,7 +24,7 @@ namespace BlockMe {
 
             chooseExes();
 
-
+            enableCheckbox.Checked = Settings.Default.enableOnBuild;
         }
 
         private void chooseExes() {

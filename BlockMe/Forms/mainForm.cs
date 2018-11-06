@@ -9,9 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlockMe.Properties;
 
 namespace BlockMe {
     public partial class mainForm : Form {
+
+        nameForm nameForm;
+        settingsForm settingsForm;
+
 
         public bool enableNow = true;
 
@@ -28,6 +33,12 @@ namespace BlockMe {
         public mainForm() {
             InitializeComponent();
         }
+
+        public void updateForm() {
+            blockFilesInPath.Checked = Settings.Default.blockInFolderDefault;
+            blockAllSubfolders.Checked = Settings.Default.blockInSubfolderDefault;
+        }
+
 
         // makes sure path exists
         private void checkPath() {
@@ -74,7 +85,7 @@ namespace BlockMe {
 
         private void buildRules(object sender, EventArgs e) {
             if (createList()) {
-                nameForm nameForm = new nameForm(this);
+                nameForm = new nameForm(this);
                 nameForm.ShowDialog();
                 if (name != null)
                     createFile();
@@ -148,5 +159,10 @@ namespace BlockMe {
         private void githubToolStripMenuItem_Click(object sender, EventArgs e) { Process.Start("https://github.com/DeanSellas/BlockMe"); }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) { Close(); }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
+            settingsForm = new settingsForm(this);
+            settingsForm.Show();
+        }
     }
 }
