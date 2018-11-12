@@ -58,5 +58,29 @@ namespace BlockMe.Properties {
                 this["enableOnBuild"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkForUpdate {
+            get {
+                return ((bool)(this["checkForUpdate"]));
+            }
+            set {
+                this["checkForUpdate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string rules {
+            get {
+                return ((string)(this["rules"]));
+            }
+            set {
+                this["rules"] = value;
+            }
+        }
     }
 }

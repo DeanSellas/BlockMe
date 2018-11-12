@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BlockMe.Properties;
+using BlockMe.Forms;
 
 namespace BlockMe {
     public partial class mainForm : Form {
@@ -17,12 +18,14 @@ namespace BlockMe {
         nameForm nameForm;
         settingsForm settingsForm;
 
+        public Dictionary<string, string> rulesDictionary;
+
 
         public bool enableNow = true;
 
         public string name;
 
-        string prefix = Properties.Resources.prefix.ToString();
+        string prefix = Resources.prefix.ToString();
 
         string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
@@ -32,6 +35,35 @@ namespace BlockMe {
 
         public mainForm() {
             InitializeComponent();
+            //Settings.Default.Reset();
+            //Console.WriteLine(Settings.Default.removeRules);
+            rulesDictionary = convertString(Settings.Default.rules);
+
+            foreach(string key in rulesDictionary.Keys) {
+                Console.WriteLine("Key {0} Val {1}", key, rulesDictionary[key]);
+            }
+        }
+
+        private Dictionary<string,string> convertString(string input) {
+            Dictionary<string, string> tmp = new Dictionary<string, string>();
+            // adds keys to dictionary
+            foreach(string line in input.Split('*')) {
+                // splits key and value items
+                string[] arr = line.Split('@');
+                try { tmp[arr[0]] = arr[1]; } catch { }
+            }
+
+            return tmp;
+        }
+
+        private void saveUninstallerRules() {
+            string tmpString = "";
+            foreach(string key in rulesDictionary.Keys) {
+                tmpString += String.Format("{0}@{1}*", key, rulesDictionary[key]);
+            }
+            Console.WriteLine(tmpString);
+            Settings.Default.rules = tmpString;
+            Settings.Default.Save();
         }
 
         public void updateForm() {
@@ -89,6 +121,7 @@ namespace BlockMe {
                 nameForm.ShowDialog();
                 if (name != null)
                     createFile();
+                
             }
             
         }
@@ -117,7 +150,7 @@ namespace BlockMe {
             return true;
         }
 
-        private void createFile() {
+        public void createFile() {
             var enable = "yes";
             if (!enableNow)
                 enable = "no";
@@ -133,26 +166,38 @@ namespace BlockMe {
                 File.Delete(filePath);
             }
 
+            string installer = "", exes = "";
+
             // adds prefix.txt to file
             File.WriteAllText(filePath, prefix);
             foreach (string path in buildList) {
-                var tmpName = name + " " + path;
 
                 // adds firewall rule
-                string val = String.Format("netsh advfirewall firewall add rule name=\"{0} {1}\" program=\"{1}\" enable=\"{2}\" protocol=any dir=out action=block",name, path, enable) + Environment.NewLine;
+                installer += String.Format("netsh advfirewall firewall add rule name=\"{0} {1}\" program=\"{1}\" enable=\"{2}\" protocol=any dir=out action=block",name, path, enable) + Environment.NewLine;
 
-                File.AppendAllText(filePath, val);
+                exes += path;
 
                 // Console.WriteLine(val);
             }
+            File.AppendAllText(filePath, installer);
             // ends file with pause so the user can see what passed and failed
             File.AppendAllText(filePath, "pause");
 
+            rulesDictionary[name] = exes;
+            //Settings.Default.Rules.Add()
+
             MessageBox.Show(String.Format("{0} was created on the desktop. Please open it in Admin Mode", fileName), "File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            // resets values
+
+            resetValues();
         }
 
-
+        public void resetValues() {
+            buildList.Clear();
+            exeList = new string[0] { };
+            name = null;
+        }
 
         private void pathTextbox_TextChanged(object sender, EventArgs e) { checkPath(); }
 
@@ -162,7 +207,18 @@ namespace BlockMe {
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
             settingsForm = new settingsForm(this);
-            settingsForm.Show();
+            settingsForm.ShowDialog();
+            
+        }
+
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e) {
+            saveUninstallerRules();
+        }
+
+        private void uninstallerToolStripMenuItem_Click(object sender, EventArgs e) {
+            rulesForm rules = new rulesForm(this);
+            rules.ShowDialog();
+            buildList.Clear();
         }
     }
 }
