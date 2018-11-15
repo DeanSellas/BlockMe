@@ -25,9 +25,9 @@ namespace BlockMe {
 
         public string name;
 
-        string prefix = Resources.prefix.ToString();
+        public string prefix = Resources.prefix.ToString();
 
-        string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public string[] exeList;
         // final list of items
@@ -44,6 +44,23 @@ namespace BlockMe {
             }
         }
 
+        // on form close
+        #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+        private void Closing(object sender, FormClosingEventArgs e) {
+        #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+            saveUninstallerRules();
+        }
+
+        // saves uninstaller rules
+        private void saveUninstallerRules() {
+            string settings = convertDictionary(rulesDictionary);
+            Console.WriteLine(settings);
+            Settings.Default.rules = settings;
+            Settings.Default.Save();
+        }
+
+
+        // converts a string to a dictionary
         private Dictionary<string,string> convertString(string input) {
             Dictionary<string, string> tmp = new Dictionary<string, string>();
             // adds keys to dictionary
@@ -56,16 +73,18 @@ namespace BlockMe {
             return tmp;
         }
 
-        private void saveUninstallerRules() {
+        // converts dictionary to string
+        private string convertDictionary(Dictionary<string, string> input) {
             string tmpString = "";
-            foreach(string key in rulesDictionary.Keys) {
+            foreach (string key in rulesDictionary.Keys) {
                 tmpString += String.Format("{0}@{1}*", key, rulesDictionary[key]);
             }
-            Console.WriteLine(tmpString);
-            Settings.Default.rules = tmpString;
-            Settings.Default.Save();
+            return tmpString;
         }
 
+
+        
+        // updates forms checkboxes
         public void updateForm() {
             blockFilesInPath.Checked = Settings.Default.blockInFolderDefault;
             blockAllSubfolders.Checked = Settings.Default.blockInSubfolderDefault;
@@ -121,7 +140,6 @@ namespace BlockMe {
                 nameForm.ShowDialog();
                 if (name != null)
                     createFile();
-                
             }
             
         }
@@ -210,15 +228,10 @@ namespace BlockMe {
             settingsForm.ShowDialog();
             
         }
-
-        private void mainForm_FormClosing(object sender, FormClosingEventArgs e) {
-            saveUninstallerRules();
-        }
-
+        
         private void uninstallerToolStripMenuItem_Click(object sender, EventArgs e) {
             rulesForm rules = new rulesForm(this);
             rules.ShowDialog();
-            buildList.Clear();
         }
     }
 }
