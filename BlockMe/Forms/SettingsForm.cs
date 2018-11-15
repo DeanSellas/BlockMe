@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BlockMe.Properties;
+
 
 namespace BlockMe {
     public partial class settingsForm : Form {
@@ -23,14 +25,24 @@ namespace BlockMe {
             mainForm = main;
         }
 
+        // assigns right values to checkboxes
+        private void settingsForm_Shown(object sender, EventArgs e) {
+            blockInFolder.Checked = Settings.Default.blockInFolder;
+            blockInSubfolder.Checked = Settings.Default.blockInSubfolder;
+            enableOnBuild.Checked = Settings.Default.enableOnBuild;
+        }
+
+        //saves settings
         private void buildSettings() {
-            Settings.Default.blockInFolderDefault = blockInFolder.Checked;
-            Settings.Default.blockInSubfolderDefault = blockInSubfolder.Checked;
+            Settings.Default.blockInFolder = blockInFolder.Checked;
+            Settings.Default.blockInSubfolder = blockInSubfolder.Checked;
             Settings.Default.enableOnBuild = enableOnBuild.Checked;
+            Settings.Default.enableUpdates = enableUpdates.Checked;
 
             mainForm.updateForm();
 
             Settings.Default.Save();
+            checkChanged = false;
         }
 
 
@@ -39,11 +51,7 @@ namespace BlockMe {
             Close();
         }
 
-        private void settingsForm_Shown(object sender, EventArgs e) {
-            blockInFolder.Checked = Settings.Default.blockInFolderDefault;
-            blockInSubfolder.Checked = Settings.Default.blockInSubfolderDefault;
-            enableOnBuild.Checked = Settings.Default.enableOnBuild;
-        }
+        
 
         private void cancelButton_Click(object sender, EventArgs e) {
 
@@ -57,17 +65,27 @@ namespace BlockMe {
 
         
         private void checkChange_Event(object sender, EventArgs e) {
-            if (blockInFolder.Checked != Settings.Default.blockInFolderDefault ||
-            blockInSubfolder.Checked != Settings.Default.blockInSubfolderDefault ||
-            enableOnBuild.Checked != Settings.Default.enableOnBuild)
-                checkChanged = true;
-            else
-                checkChanged = false;
+            checkChanged = false;
+
+            // loops through checkbox
+            foreach(Control control in this.Controls) {
+                if (control is CheckBox) {
+                    CheckBox checkBox = (CheckBox)control;
+
+                    // if setting name is correct and value is different checkChanged = true
+                    if (!Settings.Default[checkBox.Name].Equals(checkBox.Checked)) {
+                        checkChanged = true;
+                        break;
+                    }
+                }
+            }
+
 
             if (checkChanged)
                 applyButton.Enabled = true;
             else
                 applyButton.Enabled = false;
+            
         }
 
         private void applyButton_Click(object sender, EventArgs e) {

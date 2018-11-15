@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BlockMe.Properties;
 using BlockMe.Forms;
+using BlockMe.Classes;
 
 namespace BlockMe {
     public partial class mainForm : Form {
@@ -19,6 +20,8 @@ namespace BlockMe {
         settingsForm settingsForm;
 
         public Dictionary<string, string> rulesDictionary;
+
+        updateHandler update;
 
 
         public bool enableNow = true;
@@ -37,6 +40,10 @@ namespace BlockMe {
             InitializeComponent();
             //Settings.Default.Reset();
             //Console.WriteLine(Settings.Default.removeRules);
+            if (Settings.Default.enableUpdates) {
+                update = new updateHandler();
+            }
+
             rulesDictionary = convertString(Settings.Default.rules);
 
             foreach(string key in rulesDictionary.Keys) {
@@ -86,8 +93,8 @@ namespace BlockMe {
         
         // updates forms checkboxes
         public void updateForm() {
-            blockFilesInPath.Checked = Settings.Default.blockInFolderDefault;
-            blockAllSubfolders.Checked = Settings.Default.blockInSubfolderDefault;
+            blockFilesInPath.Checked = Settings.Default.blockInFolder;
+            blockAllSubfolders.Checked = Settings.Default.blockInSubfolder;
         }
 
 

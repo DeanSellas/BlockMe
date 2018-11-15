@@ -26,24 +26,24 @@ namespace BlockMe.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool blockInFolderDefault {
+        public bool blockInFolder {
             get {
-                return ((bool)(this["blockInFolderDefault"]));
+                return ((bool)(this["blockInFolder"]));
             }
             set {
-                this["blockInFolderDefault"] = value;
+                this["blockInFolder"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool blockInSubfolderDefault {
+        public bool blockInSubfolder {
             get {
-                return ((bool)(this["blockInSubfolderDefault"]));
+                return ((bool)(this["blockInSubfolder"]));
             }
             set {
-                this["blockInSubfolderDefault"] = value;
+                this["blockInSubfolder"] = value;
             }
         }
         
@@ -62,12 +62,12 @@ namespace BlockMe.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool checkForUpdate {
+        public bool enableUpdates {
             get {
-                return ((bool)(this["checkForUpdate"]));
+                return ((bool)(this["enableUpdates"]));
             }
             set {
-                this["checkForUpdate"] = value;
+                this["enableUpdates"] = value;
             }
         }
         

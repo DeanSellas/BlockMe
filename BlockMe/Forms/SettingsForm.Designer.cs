@@ -29,6 +29,7 @@
             this.blockInFolder = new System.Windows.Forms.CheckBox();
             this.blockInSubfolder = new System.Windows.Forms.CheckBox();
             this.applyButton = new System.Windows.Forms.Button();
+            this.enableUpdates = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // okButton
@@ -104,11 +105,23 @@
             this.applyButton.UseVisualStyleBackColor = true;
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
+            // enableUpdates
+            // 
+            this.enableUpdates.AutoSize = true;
+            this.enableUpdates.Location = new System.Drawing.Point(16, 82);
+            this.enableUpdates.Name = "enableUpdates";
+            this.enableUpdates.Size = new System.Drawing.Size(118, 17);
+            this.enableUpdates.TabIndex = 6;
+            this.enableUpdates.Text = "Check For Updates";
+            this.enableUpdates.UseVisualStyleBackColor = true;
+            this.enableUpdates.CheckedChanged += new System.EventHandler(this.checkChange_Event);
+            // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(288, 192);
+            this.Controls.Add(this.enableUpdates);
             this.Controls.Add(this.applyButton);
             this.Controls.Add(this.blockInSubfolder);
             this.Controls.Add(this.blockInFolder);
@@ -134,5 +147,6 @@
         private System.Windows.Forms.CheckBox blockInFolder;
         private System.Windows.Forms.CheckBox blockInSubfolder;
         private System.Windows.Forms.Button applyButton;
+        private System.Windows.Forms.CheckBox enableUpdates;
     }
 }

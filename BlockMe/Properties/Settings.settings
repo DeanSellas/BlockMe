@@ -2,16 +2,16 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BlockMe.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="blockInFolderDefault" Type="System.Boolean" Scope="User">
+    <Setting Name="blockInFolder" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="blockInSubfolderDefault" Type="System.Boolean" Scope="User">
+    <Setting Name="blockInSubfolder" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="enableOnBuild" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="checkForUpdate" Type="System.Boolean" Scope="User">
+    <Setting Name="enableUpdates" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="rules" Type="System.String" Scope="User">
