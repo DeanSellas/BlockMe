@@ -30,6 +30,7 @@ namespace BlockMe {
             blockInFolder.Checked = Settings.Default.blockInFolder;
             blockInSubfolder.Checked = Settings.Default.blockInSubfolder;
             enableOnBuild.Checked = Settings.Default.enableOnBuild;
+            enableUpdates.Checked = Settings.Default.enableUpdates;
         }
 
         //saves settings

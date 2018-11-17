@@ -49,6 +49,9 @@ namespace BlockMe {
             foreach(string key in rulesDictionary.Keys) {
                 Console.WriteLine("Key {0} Val {1}", key, rulesDictionary[key]);
             }
+
+
+            updateForm();
         }
 
         // on form close
